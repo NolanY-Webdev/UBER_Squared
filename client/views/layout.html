@@ -1,0 +1,14 @@
+<!-- main layout template that all other templates are injected into -->
+
+<template name="layout">
+
+  <section id="mainViewContainer">
+
+    <!-- yield allows other content to get inject based on routes defined in routes.js -->
+
+    {{>yield}}
+
+
+  </section>
+
+</template>
