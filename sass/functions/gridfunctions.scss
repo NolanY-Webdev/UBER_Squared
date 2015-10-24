@@ -1,0 +1,12 @@
+@mixin gridContainer( $margin, $width ) {
+
+  margin: $margin auto;
+  width: $width;
+
+}
+
+@function gridItem( $target, $container ) {
+
+  @return ($target ÷ $container) * 100%;
+
+}

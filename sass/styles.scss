@@ -1,3 +1,7 @@
+@import 'functions/fontfunctions';
+@import 'functions/gridfunctions';
+
+
 //global variables
 
 $mainColor : white;
@@ -19,6 +23,12 @@ header {
   height: 50px;
   width: 100%;
   //border: 1px solid black;
+
+  h1 {
+
+    font-size: relativeFont(48px, 24px);
+
+  }
 
 }
 
