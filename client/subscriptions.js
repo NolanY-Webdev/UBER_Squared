@@ -1,0 +1,1 @@
+//where we subscribe the user to the mongo collection we made public in publications.js
