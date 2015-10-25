@@ -22,6 +22,14 @@ Template.map.rendered = function() {
     }).addTo(map);
 
     var originMarker = L.marker(origin).addTo(map);
+    var destinationMarker = null;
+    map.on('click', function(event) {
+      if (destinationMarker) {
+        destinationMarker.setLatLng(event.latlng);
+      } else {
+        destinationMarker = L.marker(event.latlng).addTo(map);
+      }
+    });
     return [lat, lon];
   }
 
