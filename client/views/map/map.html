@@ -5,7 +5,7 @@
 <section id="mainContent" class="row"></section>
 
   <div id="map" class='twelve columns'></div>
-  {{#if currentUser}}
+  {{#if "!Meteor.user().profile.uberAccToken"}}
   <a href='https://login.uber.com/oauth/v2/authorize?response_type=code&client_id=_KX8HFVv0AqtWL48zFXY290SXNDcLLPC&scope=request'>LOGIN TO UBER</a>
   {{/if}}
 </template>

@@ -14,6 +14,10 @@ Router.route('/', function() {
 
   this.render('index');
 
+  if(Meteor.user()) {
+    Router.go('dashboard')
+  }
+
 });
 
 Router.route('/authenticated', function() {
