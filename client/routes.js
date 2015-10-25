@@ -17,14 +17,7 @@ Router.route('/', function() {
 });
 
 Router.route('/authenticated', function() {
-  Meteor.users.update(Meteor.userId(), {
-    $set : {
-      'profile.uberAuth' : this.params.query.code
-    }
-  }, null, function(err, numAff) {
-    console.log(err, numAff);
-  });
-  this.redirect('dashboard');
+  this.redirect('/sendAccessCode?code=' + this.params.query.code + '&userId=' + Meteor.userId());
 
 });
 
