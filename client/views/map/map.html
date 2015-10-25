@@ -2,9 +2,26 @@
 
 <template name="map">
 
-<section id="mainContent" class="row"></section>
+<section id="mainContent" class="row">
 
   <div id="map" class='twelve columns'></div>
 
+</section>
+
+  <div id="nextWaypoint">
+    <a href="#" id="pin">
+      <img src="/images/UberB.png" id="nextButton"/>
+    </a>
+  </div>
+// <script type="text/javascript">
+//   function onMapClick(e) {
+//   var waypoint = [e.latitude, e.longitude];
+//   L.marker(waypoint).addTo(L.map('map'));
+//           Waypoints.insert({
+//         destination: waypoint,
+//         index: Waypoints.find().count(),
+//     })
+// }
+// </script>
 
 </template>
