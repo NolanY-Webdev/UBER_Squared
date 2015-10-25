@@ -14,7 +14,17 @@ Router.route('/', function() {
 
   this.render('index');
 
+  if(Meteor.user()) {
+    Router.go('dashboard')
+  }
+
 });
+
+Router.route('/authenticated', function() {
+  this.redirect('/sendAccessCode?code=' + this.params.query.code + '&userId=' + Meteor.userId());
+
+});
+
 
 //routes dashboard calls to the dashboard template
 
@@ -30,11 +40,11 @@ Router.onBeforeAction(function() {
 
   if (!Meteor.user()) {
 
-    if (Meteor.loggingIn()) {
+    // if (Meteor.loggingIn()) {
 
-      Router.go('dashboard');
+    //   Router.go('dashboard');
 
-    }
+    // }
 
     this.render('index');
 

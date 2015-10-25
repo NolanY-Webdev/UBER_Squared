@@ -6,6 +6,7 @@
 
   <div id="map" class='twelve columns'></div>
 
+
 </section>
 
   <div id="nextWaypoint">
@@ -13,15 +14,11 @@
       <img src="/images/UberB.png" id="nextButton"/>
     </a>
   </div>
-// <script type="text/javascript">
-//   function onMapClick(e) {
-//   var waypoint = [e.latitude, e.longitude];
-//   L.marker(waypoint).addTo(L.map('map'));
-//           Waypoints.insert({
-//         destination: waypoint,
-//         index: Waypoints.find().count(),
-//     })
-// }
-// </script>
+
+
+
+  {{#if "!Meteor.user().profile.uberAccToken"}}
+  <a href='https://login.uber.com/oauth/v2/authorize?response_type=code&client_id=_KX8HFVv0AqtWL48zFXY290SXNDcLLPC&scope=request'>LOGIN TO UBER</a>
+  {{/if}}
 
 </template>
