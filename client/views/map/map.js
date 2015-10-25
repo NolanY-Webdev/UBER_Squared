@@ -19,7 +19,7 @@ Template.map.rendered = function() {
 
     map.on('click', function (e) {
         var waypoint = [e.latlng.lat, e.latlng.lng];
-        L.marker(waypoint).addTo(map);
+        L.marker(waypoint).addTo(map).on('click', onMarkerClick);
 
         Waypoints.insert({
             destination: waypoint,
@@ -31,15 +31,19 @@ Template.map.rendered = function() {
       attribution : '&copy; <a href="http://osm.org">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    var originMarker = L.marker(origin).addTo(map);
-    var destinationMarker = null;
-    map.on('click', function(event) {
-      if (destinationMarker) {
-        destinationMarker.setLatLng(event.latlng);
-      } else {
-        destinationMarker = L.marker(event.latlng).addTo(map);
-      }
+    var originMarker = L.marker(origin).addTo(map).on('click', onMarkerClick);
+
+    data = Waypoints.find({}, { sort: { index: 1 } });
+
+    data.forEach(function (row) {
+        var point = row.destination;
+        L.marker(point).addTo(map).on('click', onMarkerClick);
     });
+
+    function onMarkerClick(e) {
+        alert(e.latlng);
+    };
+
     return [lat, lon];
   }
 
