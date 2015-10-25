@@ -45,3 +45,4 @@ Router.onBeforeAction(function() {
   }
 
 });
+
