@@ -16,6 +16,19 @@ Router.route('/', function() {
 
 });
 
+Router.route('/authenticated', function() {
+  Meteor.users.update(Meteor.userId(), {
+    $set : {
+      'profile.uberAuth' : this.params.query.code
+    }
+  }, null, function(err, numAff) {
+    console.log(err, numAff);
+  });
+  this.redirect('dashboard');
+
+});
+
+
 //routes dashboard calls to the dashboard template
 
 Router.route('/dashboard', function() {
@@ -30,11 +43,11 @@ Router.onBeforeAction(function() {
 
   if (!Meteor.user()) {
 
-    if (Meteor.loggingIn()) {
+    // if (Meteor.loggingIn()) {
 
-      Router.go('dashboard');
+    //   Router.go('dashboard');
 
-    }
+    // }
 
     this.render('index');
 
