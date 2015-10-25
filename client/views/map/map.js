@@ -17,6 +17,16 @@ Template.map.rendered = function() {
 
     var map = L.map('map').setView(origin, 17);
 
+    map.on('click', function (e) {
+        var waypoint = [e.latlng.lat, e.latlng.lng];
+        L.marker(waypoint).addTo(map);
+
+        Waypoints.insert({
+            destination: waypoint,
+            index: Waypoints.find().count(),
+        })
+    });
+    
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution : '&copy; <a href="http://osm.org">OpenStreetMap</a> contributors'
     }).addTo(map);
@@ -34,5 +44,12 @@ Template.map.rendered = function() {
   }
 
   getLocation();
+
+  L.getMap('map').on('click', onMapClick);
+
+  function onMapClick(e) {
+      var waypoint = [e.latitude, e.longitude];
+      L.marker(waypoint).addTo(L.map('map'));
+  }
 
 };
