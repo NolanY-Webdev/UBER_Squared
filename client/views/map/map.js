@@ -24,6 +24,7 @@ Template.map.rendered = function() {
         Waypoints.insert({
             destination: waypoint,
             index: Waypoints.find().count(),
+            owner: Meteor.userId()
         })
     });
     
@@ -33,7 +34,7 @@ Template.map.rendered = function() {
 
     var originMarker = L.marker(origin).addTo(map).on('click', onMarkerClick);
 
-    data = Waypoints.find({}, { sort: { index: 1 } });
+    data = Waypoints.find({owner: Meteor.userId()}, { sort: { index: 1 } });
 
     data.forEach(function (row) {
         var point = row.destination;
