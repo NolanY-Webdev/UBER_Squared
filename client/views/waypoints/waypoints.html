@@ -1,0 +1,17 @@
+<!-- waypoints template that defines the waypoints view -->
+
+<template name="waypoints">
+    <div>
+        {{#each items}}
+        {{>waypoint}}
+        {{/each}}
+    </div>
+</template>
+
+<template name="waypoint">
+    <div>
+        <button class="delete">Remove Waypoint</button>
+        <span class="destination">{{destination}}</span>
+    </div>
+
+</template>
