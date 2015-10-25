@@ -27,7 +27,7 @@ Template.map.rendered = function() {
             owner: Meteor.userId()
         })
     });
-    
+
     L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution : '&copy; <a href="http://osm.org">OpenStreetMap</a> contributors'
     }).addTo(map);
@@ -54,7 +54,47 @@ Template.map.rendered = function() {
 
   function onMapClick(e) {
       var waypoint = [e.latitude, e.longitude];
+      var wpCoor = {};
       L.marker(waypoint).addTo(L.map('map'));
   }
 
 };
+
+// Template.map.helpers({
+//   getPriceEstimates : function (destination) {
+//     navigator.geolocation.getCurrentPosition(showPosition);
+//     function showPosition(position) {
+//       var origin = {};
+//       origin._latlng.lat = position.coords.latitude;
+//       origin._latlng.lng = position.coords.longitude;
+//     }
+
+//     $.get( apiUrl + 'estimates/price', {
+//       source : JSON.stringify(origin),
+//       destination : JSON.stringify(destination)
+//     })
+//     .done(function(data) {
+//       prices.reset();
+//       var result = JSON.parse(data);
+//       result.prices.forEach(function(price) {
+//         prices.add( new Price(
+//           _.extend(price, {
+//             source : origin,
+//             destination : {
+//               lat : destinationMarker._latlng.lat,
+//               lng : destinationMarker._latlng.lng
+//             }
+//           })
+//         ));
+//       });
+//     })
+//     .fail(function(err){
+//       prices.reset();
+//       if ( err.status && err.responseText) {
+//         console.error(err.status, err.responseText);
+//       } else {
+//         console.error(err);
+//       }
+//     });
+//   }
+// });
