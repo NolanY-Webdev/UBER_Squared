@@ -2,11 +2,19 @@
 
 <template name="header">
 
-  <header id='header'>
+  <header id='header' class='row'>
 
-    <a href="/layout"><img src="/images/UberB.png" class="uber_squaredB"/></a>
+    <div class="logoContainer eight columns">
+
+      <img src="/images/UberC.png"/>
+
+    </div>
+
+    <div id="loginContainer" class='four columns'>
 
     {{>loginButtons}}
+
+    </div>
 
   </header>
 
