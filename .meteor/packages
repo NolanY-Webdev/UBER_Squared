@@ -30,3 +30,4 @@ iron:router
 oauth2
 oauth
 accounts-oauth
+http
